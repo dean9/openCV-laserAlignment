@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title> OpenCV laser alignment</title>
+
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+
+</head>
+<body>
+	<article>
+		<h1> OpenCV laser alignment proof of concept</h1>
+		<p>2021-01-30</p>
+		<p>code: </p>
+		<p> OpenCV Docs: <a href="https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html" target="_blank">https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html"</a>
+		<h2> Test image </h2>
+		<p> First created a test image to try out the image processing. Will use the fact that the laser is red, so it is ideal to not have anything else red in the picture.  Here I use some pi camera image that is mostly bluish, it will probably be trickier to get this working with the chaotic backdrop of the hutch behind it.</p>
+		<h3> Pretend this is laser light reflected off a crystal</h3>
+		<img src="redThing.jpeg" alt="red thing">
+		<h3> Add the laser light in a random location onto some background image</h3>
+		<img src="testImage.png" alt="light on the background img">
+
+		<h2> Image processing </h2>
+		<p>OpenCV makes it easy to select out pixels of a particular color, and I use scipy to calc the center of mass of the laser light</p>
+		<h3> Grab the red pixels, bitwise-and away the rest </h3>		
+		<img src="redPixels.png" alt="red pixels only">
+		<h3> Convert to grayscale for the center of mass calc </h3>
+		<img src="grayMask.png" alt="convert red pixels to grayscale">
+		<h3> Once the COM is found, add a green circle at its location onto the original test image </h3>
+		<img src="finalImage.png" alt="final image with the target marked">
+	</article>
+	
+</body>
+</html>
