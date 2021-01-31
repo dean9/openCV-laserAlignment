@@ -11,24 +11,30 @@
 	<article>
 		<h1> OpenCV laser alignment proof of concept</h1>
 		<p>2021-01-30</p>
-		<p>code: </p>
-		<p> OpenCV Docs: <a href="https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html" target="_blank">https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html"</a>
+		<p>code: <a href="https://github.com/dean9/openCV-laserAlignment">https://github.com/dean9/openCV-laserAlignment</a> </p>
+		<p> OpenCV Docs: <a href="https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html" target="_blank">https://docs.opencv.org/4.5.1/d6/d00/tutorial_py_root.html</a></p>
+		<hr>
 		<h2> Test image </h2>
 		<p> First created a test image to try out the image processing. Will use the fact that the laser is red, so it is ideal to not have anything else red in the picture.  Here I use some pi camera image that is mostly bluish, it will probably be trickier to get this working with the chaotic backdrop of the hutch behind it.</p>
 		<h3> Pretend this is laser light reflected off a crystal</h3>
 		<img src="redThing.jpeg" alt="red thing">
 		<h3> Add the laser light in a random location onto some background image</h3>
-		<img src="testImage.png" alt="light on the background img">
-
+		<img src="testImage.png" alt="light on the background img" width="1500">
+                <hr>
 		<h2> Image processing </h2>
 		<p>OpenCV makes it easy to select out pixels of a particular color, and I use scipy to calc the center of mass of the laser light</p>
 		<h3> Grab the red pixels, bitwise-and away the rest </h3>		
-		<img src="redPixels.png" alt="red pixels only">
+		<img src="redPixels.png" alt="red pixels only" width="1500">
 		<h3> Convert to grayscale for the center of mass calc </h3>
-		<img src="grayMask.png" alt="convert red pixels to grayscale">
+		<img src="grayMask.png" alt="convert red pixels to grayscale" width="1500">
 		<h3> Once the COM is found, add a green circle at its location onto the original test image </h3>
-		<img src="finalImage.png" alt="final image with the target marked">
-	</article>
+		<img src="finalImage.png" alt="final image with the target marked" width="1500">
+		<p>bullseye...</p>
 	
+		<hr>
+		<h2> Try the image processing on a real image from the beamline </h2>
+		<img src="redVortexResult.png" alt="vortex detector in red" width="1600">
+		<p> Too easy.  it almost worked right away, just needed to tighten the definition of a red hue to throw out some orangish objects getting included.  Need to make sure there are no obvious red objects in the picture (like the HV bnc and mirror gearboxes) and it should work. with the lights off and a white screen on the vortex face it'd be easy. </p>
+	</article>
 </body>
 </html>

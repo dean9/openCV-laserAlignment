@@ -1,5 +1,13 @@
 #!venv/bin/python
 
+"""
+Experiment with finding a red object in a picture.
+  First add a red object onto a background image in a random location.  
+  Then process the image to independently find the location of the object.
+"""
+
+
+
 import cv2 as cv
 from random import random
 from scipy import ndimage
